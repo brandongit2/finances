@@ -1,0 +1,9 @@
+body {
+    margin: 0px;
+}
+
+p,
+h1 {
+    font-family: museo-sans;
+    margin: 0px;
+}
