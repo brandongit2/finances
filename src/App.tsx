@@ -22,7 +22,7 @@ export default function App({firebase}: PropTypes) {
     useEffect(() => {
         function signOut() {
             auth().signOut();
-            setUser((state) => ({...state, isLoggedIn: false, email: null}));
+            setUser((state) => ({...state, isSignedIn: false, email: null}));
         }
 
         const unsubscribe = auth().onAuthStateChanged((user) => {
@@ -30,7 +30,7 @@ export default function App({firebase}: PropTypes) {
                 setUser({
                     signOut,
                     loading: false,
-                    isLoggedIn: true,
+                    isSignedIn: true,
                     email: user.email
                 });
         });

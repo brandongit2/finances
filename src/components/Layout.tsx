@@ -16,10 +16,10 @@ export default function Layout({
     className = '',
     authenticatedRoute = false
 }: PropTypes) {
-    const {loading, isLoggedIn, signOut} = useContext(UserContext);
+    const {loading, isSignedIn, signOut} = useContext(UserContext);
     const history = useHistory();
     useEffect(() => {
-        if (authenticatedRoute && !isLoggedIn && !loading) {
+        if (authenticatedRoute && !isSignedIn && !loading) {
             history.push('/sign-in');
         }
     });
@@ -29,7 +29,7 @@ export default function Layout({
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1>Finances</h1>
-                {isLoggedIn ? (
+                {isSignedIn ? (
                     <button
                         onClick={() => {
                             signOut();

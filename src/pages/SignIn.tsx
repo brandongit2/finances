@@ -10,7 +10,9 @@ export default function SignIn() {
     const [password, setPassword] = useState('');
 
     const {auth} = useContext(FirebaseContext);
-    async function signIn() {
+    async function signIn(evt: React.FormEvent<HTMLFormElement>) {
+        evt.preventDefault();
+
         try {
             await auth().setPersistence(auth.Auth.Persistence.LOCAL);
             auth().signInWithEmailAndPassword(email, password);
@@ -20,14 +22,14 @@ export default function SignIn() {
     }
 
     const history = useHistory();
-    const {isLoggedIn} = useContext(UserContext);
+    const {isSignedIn} = useContext(UserContext);
     useEffect(() => {
-        if (isLoggedIn) history.push('/');
-    }, [history, isLoggedIn]);
+        if (isSignedIn) history.push('/');
+    }, [history, isSignedIn]);
 
     return (
         <Layout className={styles.container}>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={signIn}>
                 <label>Email:</label>
                 <input
                     type="text"
@@ -47,11 +49,7 @@ export default function SignIn() {
                         setPassword(evt.target.value);
                     }}
                 />
-                <button
-                    type="button"
-                    style={{gridColumn: '1 / 3'}}
-                    onClick={signIn}
-                >
+                <button type="button" style={{gridColumn: '1 / 3'}}>
                     Sign in
                 </button>
             </form>

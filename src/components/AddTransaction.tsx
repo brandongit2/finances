@@ -15,7 +15,7 @@ export default function AddTransaction() {
     }
 
     const {firestore} = useContext(FirebaseContext);
-    function submit(evt: ChangeEvent<HTMLFormElement>) {
+    function submit(evt: React.FormEvent<HTMLFormElement>) {
         evt.preventDefault();
 
         // Validate form

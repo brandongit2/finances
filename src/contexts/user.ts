@@ -2,7 +2,7 @@ import {createContext} from 'react';
 
 export const userContextDefaultValue = {
     loading: true,
-    isLoggedIn: false,
+    isSignedIn: false,
     email: null as string | null,
     signOut: () => {}
 };
