@@ -1,8 +1,9 @@
 import {useContext, useEffect, useState} from 'react';
 
-import Layout from '../components/Layout';
-import Loading from '../components/Loading';
+import styles from './Home.module.css';
+import {AddTransaction, Layout, Loading, Transaction} from '../components';
 import {FirebaseContext} from '../contexts/firebase';
+import {Transaction as TransactionInterface} from '../defs/Transaction';
 
 export default function Home() {
     const [data, setData] = useState<Array<{[key: string]: any}>>([]);
@@ -12,9 +13,15 @@ export default function Home() {
     useEffect(() => {
         firestore()
             .collection('transactions')
-            .get()
-            .then(({docs}) => {
-                setData(docs.map((doc) => ({...doc.data(), id: doc.id})));
+            .onSnapshot((querySnapshot) => {
+                let transactions = [] as Array<TransactionInterface>;
+                querySnapshot.forEach((doc) => {
+                    transactions.push({
+                        ...(doc.data() as TransactionInterface),
+                        id: doc.id
+                    });
+                });
+                setData(transactions);
             });
     }, [firestore]);
 
@@ -22,13 +29,13 @@ export default function Home() {
         return <Loading />;
     } else {
         return (
-            <Layout authenticatedRoute>
+            <Layout authenticatedRoute className={styles.container}>
                 {data.map((datum: any) => (
                     <div key={datum.id}>
-                        <p>{datum.type}</p>
-                        <p>{datum.amount}</p>
+                        <Transaction type={datum.type} amount={datum.amount} />
                     </div>
                 ))}
+                <AddTransaction />
             </Layout>
         );
     }

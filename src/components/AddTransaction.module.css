@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    row-gap: 1rem;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.radio {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    align-items: center;
+    column-gap: 0.5em;
+}
+
+.submit {
+    grid-column: 1 / 3;
+}
