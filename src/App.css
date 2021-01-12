@@ -1,9 +1,51 @@
+:root {
+    --foreground-color: #000000;
+    --background-color: #ffffff;
+    --accent-color: #36b5f7;
+}
+
+html {
+    height: 100%;
+}
+
 body {
     margin: 0px;
+    height: 100%;
+}
+
+#root {
+    height: 100%;
 }
 
 p,
-h1 {
+span,
+label,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input {
     font-family: museo-sans;
     margin: 0px;
+}
+
+button {
+    background: var(--accent-color);
+    border: 0px;
+    padding: 0.4rem;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+input {
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--foreground-color);
+    padding: 0.4rem;
+    outline: none;
 }

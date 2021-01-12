@@ -1,37 +1,59 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
-import {Suspense} from 'react';
+import {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import './App.css';
-import Loading from './components/Loading';
-import FirebaseContext from './contexts/firebase';
-import Home from './pages/Home';
+import {
+    FirebaseContext,
+    UserContext,
+    userContextDefaultValue
+} from './contexts';
+import {Home, SignIn} from './pages';
 
-const firebaseConfig = {
-    apiKey: 'AIzaSyDx7EgsxgP8VKjW928yHC104PvB0HxVnGY',
-    authDomain: 'finances-ef0a0.firebaseapp.com',
-    projectId: 'finances-ef0a0',
-    storageBucket: 'finances-ef0a0.appspot.com',
-    messagingSenderId: '150511282825',
-    appId: '1:150511282825:web:9b85dfd39ac32b01807458',
-    measurementId: 'G-9ZDJ3FFGZ5'
-};
+interface PropTypes {
+    firebase: typeof firebase;
+}
 
-firebase.initializeApp(firebaseConfig);
+export default function App({firebase}: PropTypes) {
+    const {auth, firestore} = firebase;
 
-export default function App() {
+    const [user, setUser] = useState(userContextDefaultValue);
+
+    useEffect(() => {
+        function signOut() {
+            auth().signOut();
+            setUser((state) => ({...state, isLoggedIn: false, email: null}));
+        }
+
+        const unsubscribe = auth().onAuthStateChanged((user) => {
+            user &&
+                setUser({
+                    signOut,
+                    loading: false,
+                    isLoggedIn: true,
+                    email: user.email
+                });
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [auth]);
+
     return (
-        <FirebaseContext.Provider value={{firestore: firebase.firestore()}}>
-            <Router>
-                <Switch>
-                    <Route path="/">
-                        <Suspense fallback={Loading}>
+        <FirebaseContext.Provider value={{auth, firebase, firestore}}>
+            <UserContext.Provider value={user}>
+                <Router>
+                    <Switch>
+                        <Route path="/sign-in">
+                            <SignIn />
+                        </Route>
+                        <Route path="/">
                             <Home />
-                        </Suspense>
-                    </Route>
-                </Switch>
-            </Router>
+                        </Route>
+                    </Switch>
+                </Router>
+            </UserContext.Provider>
         </FirebaseContext.Provider>
     );
 }

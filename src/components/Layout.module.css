@@ -1,0 +1,17 @@
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.contents {
+    flex-grow: 1;
+    position: relative;
+    padding: 1rem;
+}
