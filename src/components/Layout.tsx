@@ -16,7 +16,7 @@ export default function Layout({
     className = '',
     authenticatedRoute = false
 }: PropTypes) {
-    const {loading, isSignedIn, signOut} = useContext(UserContext);
+    const {loading, isSignedIn, signOut, email} = useContext(UserContext);
     const history = useHistory();
     useEffect(() => {
         if (authenticatedRoute && !isSignedIn && !loading) {
@@ -29,15 +29,20 @@ export default function Layout({
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1>Finances</h1>
-                {isSignedIn ? (
-                    <button
-                        onClick={() => {
-                            signOut();
-                        }}
-                    >
-                        Sign out
-                    </button>
-                ) : null}
+                <div className={styles.rightSide}>
+                    <span>
+                        Logged in as <b>{email}</b>.
+                    </span>
+                    {isSignedIn ? (
+                        <button
+                            onClick={() => {
+                                signOut();
+                            }}
+                        >
+                            Sign out
+                        </button>
+                    ) : null}
+                </div>
             </header>
             <div className={`${className} ${styles.contents}`}>{children}</div>
         </div>

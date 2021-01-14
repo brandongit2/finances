@@ -1,3 +1,4 @@
+import styles from './Transaction.module.css';
 import {TransactionTypes} from '../../../defs/TransactionTypes';
 
 interface PropTypes {
@@ -7,9 +8,9 @@ interface PropTypes {
 
 export default function Transaction({type, amount}: PropTypes) {
     return (
-        <div>
+        <div className={styles[type]}>
             <b>{type}</b>
-            <p>{amount}</p>
+            <p>${amount}</p>
         </div>
     );
 }

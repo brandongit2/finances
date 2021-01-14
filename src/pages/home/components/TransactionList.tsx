@@ -32,6 +32,7 @@ export default function TransactionList() {
     } else {
         return (
             <div className={styles.container}>
+                <h2>All transactions</h2>
                 {data.map((datum: any) => (
                     <div key={datum.id}>
                         <Transaction type={datum.type} amount={datum.amount} />

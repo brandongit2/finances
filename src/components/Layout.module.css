@@ -8,6 +8,14 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    padding-bottom: 0px;
+}
+
+.rightSide {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 1rem;
+    align-items: center;
 }
 
 .contents {

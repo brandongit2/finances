@@ -6,7 +6,7 @@ import {TransactionTypes} from '../../../defs/TransactionTypes';
 
 export default function AddTransaction() {
     const [transactionType, setTransactionType] = useState<TransactionTypes>(
-        null
+        'deposit'
     );
     const [amount, setAmount] = useState(0);
 
@@ -29,24 +29,14 @@ export default function AddTransaction() {
             .add({type: transactionType, amount});
 
         // Reset form values
-        setTransactionType(null);
+        setTransactionType('deposit');
         setAmount(0);
     }
 
     return (
         <form className={styles.container} onSubmit={submit}>
+            <h2>Add a transaction</h2>
             <div className={styles.radio}>
-                <input
-                    type="radio"
-                    id="transactionTypeWithdrawl"
-                    name="transactionType"
-                    value="withdrawl"
-                    required
-                    checked={transactionType === 'withdrawl'}
-                    onChange={onTransactionTypeChanged}
-                />
-                <label htmlFor="transactionTypeWithdrawl">Withdrawl</label>
-
                 <input
                     type="radio"
                     id="transactiontypeDeposit"
@@ -57,15 +47,28 @@ export default function AddTransaction() {
                     onChange={onTransactionTypeChanged}
                 />
                 <label htmlFor="transactiontypeDeposit">Deposit</label>
+
+                <input
+                    type="radio"
+                    id="transactionTypeWithdrawl"
+                    name="transactionType"
+                    value="withdrawl"
+                    required
+                    checked={transactionType === 'withdrawl'}
+                    onChange={onTransactionTypeChanged}
+                />
+                <label htmlFor="transactionTypeWithdrawl">Withdrawl</label>
             </div>
-            <label>Amount:</label>
-            <input
-                type="number"
-                required
-                value={amount}
-                onChange={(evt) => setAmount(parseFloat(evt.target.value))}
-            />
-            <button className={styles.submit}>Submit</button>
+            <div>
+                <label>Amount:</label>
+                <input
+                    type="number"
+                    required
+                    value={amount}
+                    onChange={(evt) => setAmount(parseFloat(evt.target.value))}
+                />
+            </div>
+            <button>Submit</button>
         </form>
     );
 }
