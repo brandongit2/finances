@@ -1,8 +1,9 @@
+import firebase from 'firebase/app';
 import {ChangeEvent, useContext, useState} from 'react';
 
 import styles from './AddTransaction.module.css';
-import {FirebaseContext} from '../../../contexts';
-import {TransactionTypes} from '../../../defs/TransactionTypes';
+import {FirebaseContext} from '../../../../contexts';
+import {TransactionTypes} from '../../../../defs/TransactionTypes';
 
 export default function AddTransaction() {
     const [transactionType, setTransactionType] = useState<TransactionTypes>(
@@ -26,7 +27,19 @@ export default function AddTransaction() {
 
         firestore()
             .collection('transactions')
-            .add({type: transactionType, amount});
+            .add({
+                time: firebase.firestore.Timestamp.now(),
+                type: transactionType,
+                amount
+            });
+        firestore()
+            .collection('accountInfo')
+            .doc('accountInfo')
+            .update({
+                balance: firebase.firestore.FieldValue.increment(
+                    amount * (transactionType === 'deposit' ? 1 : -1)
+                )
+            });
 
         // Reset form values
         setTransactionType('deposit');

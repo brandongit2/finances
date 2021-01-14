@@ -1,5 +1,5 @@
 import styles from './Transaction.module.css';
-import {TransactionTypes} from '../../../defs/TransactionTypes';
+import {TransactionTypes} from '../../../../defs/TransactionTypes';
 
 interface PropTypes {
     type: TransactionTypes;

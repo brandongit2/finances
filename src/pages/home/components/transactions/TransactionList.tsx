@@ -3,9 +3,9 @@ import {useContext, useEffect, useState} from 'react';
 import AddTransaction from './AddTransaction';
 import Transaction from './Transaction';
 import styles from './TransactionList.module.css';
-import {FirebaseContext} from '../../../contexts';
-import {Transaction as TransactionInterface} from '../../../defs/Transaction';
-import Loading from '../../../components/Loading';
+import {FirebaseContext} from '../../../../contexts';
+import {Transaction as TransactionInterface} from '../../../../defs/Transaction';
+import Loading from '../../../../components/Loading';
 
 export default function TransactionList() {
     const [data, setData] = useState<Array<TransactionInterface> | null>(null);
