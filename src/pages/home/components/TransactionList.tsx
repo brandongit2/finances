@@ -1,12 +1,14 @@
 import {useContext, useEffect, useState} from 'react';
 
-import styles from './Home.module.css';
-import {AddTransaction, Layout, Loading, Transaction} from '../components';
-import {FirebaseContext} from '../contexts/firebase';
-import {Transaction as TransactionInterface} from '../defs/Transaction';
+import AddTransaction from './AddTransaction';
+import Transaction from './Transaction';
+import styles from './TransactionList.module.css';
+import {FirebaseContext} from '../../../contexts';
+import {Transaction as TransactionInterface} from '../../../defs/Transaction';
+import Loading from '../../../components/Loading';
 
-export default function Home() {
-    const [data, setData] = useState<Array<{[key: string]: any}>>([]);
+export default function TransactionList() {
+    const [data, setData] = useState<Array<TransactionInterface> | null>(null);
 
     const {firestore} = useContext(FirebaseContext);
 
@@ -29,14 +31,14 @@ export default function Home() {
         return <Loading />;
     } else {
         return (
-            <Layout authenticatedRoute className={styles.container}>
+            <div className={styles.container}>
                 {data.map((datum: any) => (
                     <div key={datum.id}>
                         <Transaction type={datum.type} amount={datum.amount} />
                     </div>
                 ))}
                 <AddTransaction />
-            </Layout>
+            </div>
         );
     }
 }

@@ -1,8 +1,8 @@
 import {ChangeEvent, useContext, useState} from 'react';
 
 import styles from './AddTransaction.module.css';
-import {FirebaseContext} from '../contexts';
-import {TransactionTypes} from '../defs/TransactionTypes';
+import {FirebaseContext} from '../../../contexts';
+import {TransactionTypes} from '../../../defs/TransactionTypes';
 
 export default function AddTransaction() {
     const [transactionType, setTransactionType] = useState<TransactionTypes>(
