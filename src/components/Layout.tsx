@@ -2,7 +2,7 @@ import {ReactNode, useContext, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import styles from './Layout.module.css';
-import Loading from './Loading';
+// import Loading from './Loading';
 import {UserContext} from '../contexts';
 
 interface PropTypes {
