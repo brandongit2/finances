@@ -5,7 +5,7 @@ import {Layout} from '../../components';
 
 export default function Home() {
     return (
-        <Layout authenticatedRoute className={styles.container}>
+        <Layout className={styles.container}>
             <TransactionList />
             <Dashboard />
         </Layout>

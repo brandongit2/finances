@@ -24,7 +24,7 @@ export default function Layout({
         }
     });
 
-    if (loading) return <Loading />;
+    // if (loading) return <Loading />;
     return (
         <div className={styles.container}>
             <header className={styles.header}>
