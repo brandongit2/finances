@@ -26,13 +26,12 @@ export default function App({firebase}: PropTypes) {
         }
 
         const unsubscribe = auth().onAuthStateChanged((user) => {
-            user &&
-                setUser({
-                    signOut,
-                    loading: false,
-                    isSignedIn: true,
-                    email: user.email
-                });
+            setUser({
+                signOut,
+                loading: false,
+                isSignedIn: !!user,
+                email: user ? user.email : null
+            });
         });
 
         return () => {

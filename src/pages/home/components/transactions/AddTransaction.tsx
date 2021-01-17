@@ -1,7 +1,8 @@
 import firebase from 'firebase/app';
-import {ChangeEvent, useContext, useState} from 'react';
+import {ChangeEvent, useContext, useReducer, useState} from 'react';
 
 import styles from './AddTransaction.module.css';
+import {Input} from '../../../../components';
 import {FirebaseContext} from '../../../../contexts';
 import {TransactionTypes} from '../../../../defs/TransactionTypes';
 
@@ -9,7 +10,18 @@ export default function AddTransaction() {
     const [transactionType, setTransactionType] = useState<TransactionTypes>(
         'deposit'
     );
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useReducer(
+        (state: string, newValue: string) => {
+            // Remove negative signs
+            newValue = newValue.replace(/-/g, '');
+
+            // Truncate to hundredths place
+            newValue = newValue.replace(/(?<=\.[0-9]{2})[0-9]+/, '');
+
+            return newValue;
+        },
+        '0'
+    );
 
     function onTransactionTypeChanged(evt: ChangeEvent<HTMLInputElement>) {
         setTransactionType(evt.target.value as TransactionTypes);
@@ -25,31 +37,41 @@ export default function AddTransaction() {
             return;
         }
 
-        firestore()
-            .collection('transactions')
-            .add({
-                time: firebase.firestore.Timestamp.now(),
-                type: transactionType,
-                amount
-            });
+        firestore().collection('transactions').add({
+            time: firebase.firestore.Timestamp.now(),
+            type: transactionType,
+            amount
+        });
         firestore()
             .collection('accountInfo')
             .doc('accountInfo')
             .update({
                 balance: firebase.firestore.FieldValue.increment(
-                    amount * (transactionType === 'deposit' ? 1 : -1)
+                    parseFloat(amount) *
+                        (transactionType === 'deposit' ? 1 : -1)
                 )
             });
 
         // Reset form values
         setTransactionType('deposit');
-        setAmount(0);
+        setAmount('0');
     }
 
     return (
         <form className={styles.container} onSubmit={submit}>
             <h2>Add a transaction</h2>
             <div className={styles.radio}>
+                <div
+                    className={`${styles.radioOverlay} ${styles[transactionType]}`}
+                >
+                    <div>
+                        <span>Deposit</span>
+                    </div>
+                    <div>
+                        <span>Withdrawl</span>
+                    </div>
+                </div>
+
                 <input
                     type="radio"
                     id="transactiontypeDeposit"
@@ -74,11 +96,14 @@ export default function AddTransaction() {
             </div>
             <div>
                 <label>Amount:</label>
-                <input
+                <span>$</span>
+                <Input
                     type="number"
                     required
                     value={amount}
-                    onChange={(evt) => setAmount(parseFloat(evt.target.value))}
+                    onChange={(evt) => {
+                        setAmount(evt.target.value);
+                    }}
                 />
             </div>
             <button>Submit</button>

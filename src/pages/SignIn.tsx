@@ -1,8 +1,8 @@
-import {useContext, useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useContext, useState} from 'react';
+import {Redirect} from 'react-router-dom';
 
 import styles from './SignIn.module.css';
-import Layout from '../components/Layout';
+import {Input, Layout} from '../components';
 import {FirebaseContext, UserContext} from '../contexts';
 
 export default function SignIn() {
@@ -14,6 +14,7 @@ export default function SignIn() {
         evt.preventDefault();
 
         try {
+            console.log('helo');
             await auth().setPersistence(auth.Auth.Persistence.LOCAL);
             auth().signInWithEmailAndPassword(email, password);
         } catch (err) {
@@ -21,17 +22,14 @@ export default function SignIn() {
         }
     }
 
-    const history = useHistory();
     const {isSignedIn} = useContext(UserContext);
-    useEffect(() => {
-        if (isSignedIn) history.push('/');
-    }, [history, isSignedIn]);
+    if (isSignedIn) return <Redirect to="/" />;
 
     return (
         <Layout className={styles.container}>
             <form className={styles.form} onSubmit={signIn}>
                 <label>Email:</label>
-                <input
+                <Input
                     type="text"
                     autoComplete="email"
                     value={email}
@@ -41,7 +39,7 @@ export default function SignIn() {
                 />
 
                 <label>Password:</label>
-                <input
+                <Input
                     type="password"
                     autoComplete="current-password"
                     value={password}
@@ -49,9 +47,7 @@ export default function SignIn() {
                         setPassword(evt.target.value);
                     }}
                 />
-                <button type="button" style={{gridColumn: '1 / 3'}}>
-                    Sign in
-                </button>
+                <button style={{gridColumn: '1 / 3'}}>Sign in</button>
             </form>
         </Layout>
     );

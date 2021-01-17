@@ -1,9 +1,9 @@
 :root {
-    --color-1: #03045e;
-    --color-2: #0077b6;
-    --color-3: #00b4d8;
-    --color-4: #90e0ef;
-    --color-5: #caf0f8;
+    --color-1: #514010;
+    --color-2: #776123;
+    --color-3: #a48a42;
+    --color-4: #ddcb9b;
+    --color-5: #fdf6e3;
 
     --border-radius: 5px;
 }
@@ -15,6 +15,8 @@ html {
 body {
     margin: 0px;
     height: 100%;
+    background: var(--color-5);
+    color: var(--color-1);
 }
 
 #root {
@@ -56,14 +58,17 @@ button {
     outline: none;
     cursor: pointer;
     font-size: 1em;
+    transition-property: opacity, background;
+    transition-duration: 0.2s;
 }
 
-input {
-    font-size: 1em;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--color-1);
-    padding: 0.4rem;
-    outline: none;
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    opacity: 1;
+    background: var(--color-2);
 }
 
 label {
