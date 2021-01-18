@@ -1,9 +1,10 @@
-import {ReactNode, useContext} from 'react';
+import {ReactNode} from 'react';
 import {Redirect} from 'react-router-dom';
 
+import {Footer} from './';
 import styles from './Layout.module.css';
-import Loading from './Loading';
-import {UserContext} from '../contexts';
+import {useSignOut} from '../hooks';
+import store from '../redux/store';
 
 interface PropTypes {
     children: ReactNode;
@@ -16,11 +17,11 @@ export default function Layout({
     className = '',
     authenticatedRoute = false
 }: PropTypes) {
-    const {loading, isSignedIn, signOut, email} = useContext(UserContext);
+    const {isSignedIn, email} = store.getState().userInfo;
 
-    if (loading) return <Loading />;
-    if (authenticatedRoute && !isSignedIn && !loading)
-        return <Redirect to="/sign-in" />;
+    const signOut = useSignOut();
+
+    if (authenticatedRoute && !isSignedIn) return <Redirect to="/sign-in" />;
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -41,6 +42,7 @@ export default function Layout({
                 ) : null}
             </header>
             <div className={`${className} ${styles.contents}`}>{children}</div>
+            <Footer />
         </div>
     );
 }

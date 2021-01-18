@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {FirebaseAppProvider} from 'reactfire';
 
 import App from './App';
 
@@ -16,11 +16,11 @@ const firebaseConfig = {
     measurementId: 'G-9ZDJ3FFGZ5'
 };
 
-firebase.initializeApp(firebaseConfig);
-
 ReactDOM.render(
     <React.StrictMode>
-        <App firebase={firebase} />
+        <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+            <App />
+        </FirebaseAppProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

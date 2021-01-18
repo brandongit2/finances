@@ -1,58 +1,38 @@
-import firebase from 'firebase/app';
-import {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {useUser} from 'reactfire';
 
 import './App.css';
-import {
-    FirebaseContext,
-    UserContext,
-    userContextDefaultValue
-} from './contexts';
+import {Loading} from './components';
+import {userInfo} from './redux/actions';
+import store from './redux/store';
 import {Home, SignIn} from './pages';
 
-interface PropTypes {
-    firebase: typeof firebase;
-}
+export default function App() {
+    const {status, data} = useUser();
 
-export default function App({firebase}: PropTypes) {
-    const {auth, firestore} = firebase;
+    if (status === 'success') {
+        if (data)
+            store.dispatch(
+                userInfo.signIn({
+                    uid: data.uid,
+                    email: data.email
+                })
+            );
+    }
 
-    const [user, setUser] = useState(userContextDefaultValue);
-
-    useEffect(() => {
-        function signOut() {
-            auth().signOut();
-            setUser((state) => ({...state, isSignedIn: false, email: null}));
-        }
-
-        const unsubscribe = auth().onAuthStateChanged((user) => {
-            setUser({
-                signOut,
-                loading: false,
-                isSignedIn: !!user,
-                email: user ? user.email : null
-            });
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, [auth]);
-
+    if (status === 'loading') return <Loading />;
     return (
-        <FirebaseContext.Provider value={{auth, firebase, firestore}}>
-            <UserContext.Provider value={user}>
-                <Router>
-                    <Switch>
-                        <Route path="/sign-in">
-                            <SignIn />
-                        </Route>
-                        <Route path="/">
-                            <Home />
-                        </Route>
-                    </Switch>
-                </Router>
-            </UserContext.Provider>
-        </FirebaseContext.Provider>
+        <div className="app">
+            <Router>
+                <Switch>
+                    <Route path="/sign-in">
+                        <SignIn />
+                    </Route>
+                    <Route path="/">
+                        <Home />
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
     );
 }

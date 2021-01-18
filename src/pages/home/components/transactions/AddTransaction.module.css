@@ -32,7 +32,8 @@
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-    transition: left 0.2s;
+    transition-property: left, background, color;
+    transition-duration: 0.2s;
 }
 
 .radioOverlay > div {

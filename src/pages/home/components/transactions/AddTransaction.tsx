@@ -1,12 +1,15 @@
 import firebase from 'firebase/app';
-import {ChangeEvent, useContext, useReducer, useState} from 'react';
+import {ChangeEvent, useReducer, useState} from 'react';
+import {useFirestore} from 'reactfire';
 
 import styles from './AddTransaction.module.css';
 import {Input} from '../../../../components';
-import {FirebaseContext} from '../../../../contexts';
-import {TransactionTypes} from '../../../../defs/TransactionTypes';
+import {TransactionTypes} from '../../../../defs';
+import store from '../../../../redux/store';
 
 export default function AddTransaction() {
+    const firestore = useFirestore();
+
     const [transactionType, setTransactionType] = useState<TransactionTypes>(
         'deposit'
     );
@@ -27,7 +30,6 @@ export default function AddTransaction() {
         setTransactionType(evt.target.value as TransactionTypes);
     }
 
-    const {firestore} = useContext(FirebaseContext);
     function submit(evt: React.FormEvent<HTMLFormElement>) {
         evt.preventDefault();
 
@@ -37,16 +39,22 @@ export default function AddTransaction() {
             return;
         }
 
-        firestore().collection('transactions').add({
-            time: firebase.firestore.Timestamp.now(),
-            type: transactionType,
-            amount
-        });
-        firestore()
-            .collection('accountInfo')
-            .doc('accountInfo')
+        firestore
+            .collection('users')
+            .doc(store.getState().userInfo.uid as string)
+            .collection('transactions')
+            .add({
+                time: firebase.firestore.Timestamp.now(),
+                type: transactionType,
+                amount: parseFloat(amount)
+            });
+        firestore
+            .collection('users')
+            .doc(store.getState().userInfo.uid as string)
+            .collection('userInfo')
+            .doc('balances')
             .update({
-                balance: firebase.firestore.FieldValue.increment(
+                main: firebase.firestore.FieldValue.increment(
                     parseFloat(amount) *
                         (transactionType === 'deposit' ? 1 : -1)
                 )

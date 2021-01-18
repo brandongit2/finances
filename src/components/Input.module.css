@@ -17,13 +17,14 @@
 
 .container::before {
     background: var(--color-1);
+    transition: background 0.2s;
 }
 
 .container::after {
     width: 0px;
     left: 50%;
     background: var(--color-3);
-    transition-property: width, left;
+    transition-property: width, left, background;
     transition-duration: 0.2s;
 }
 

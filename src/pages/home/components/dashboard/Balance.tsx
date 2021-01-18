@@ -1,24 +1,23 @@
-import {useContext, useEffect, useState} from 'react';
+import {useFirestore, useFirestoreDocData} from 'reactfire';
 
-import {FirebaseContext} from '../../../../contexts';
+import {Loading} from '../../../../components';
+import store from '../../../../redux/store';
 
 export default function Balance() {
-    const [balance, setBalance] = useState(0);
+    const transactionsRef = useFirestore()
+        .collection('users')
+        .doc(store.getState().userInfo.uid as string)
+        .collection('userInfo')
+        .doc('balances');
+    const {status, data: balances} = useFirestoreDocData<{main: number}>(
+        transactionsRef
+    );
 
-    const {firestore} = useContext(FirebaseContext);
-    useEffect(() => {
-        firestore()
-            .collection('accountInfo')
-            .doc('accountInfo')
-            .onSnapshot((doc) => {
-                setBalance(doc.data()?.balance);
-            });
-    }, [firestore]);
-
+    if (status === 'loading') return <Loading />;
     return (
         <div>
             <h2>Balance</h2>
-            <p>${balance}</p>
+            <p>${balances.main}</p>
         </div>
     );
 }

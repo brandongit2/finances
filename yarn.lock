@@ -1487,7 +1487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.2, @babel/runtime@npm:^7.8.4":
   version: 7.12.5
   resolution: "@babel/runtime@npm:7.12.5"
   dependencies:
@@ -1617,7 +1617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app@npm:0.6.13":
+"@firebase/app@npm:0.6.13, @firebase/app@npm:^0.6.13":
   version: 0.6.13
   resolution: "@firebase/app@npm:0.6.13"
   dependencies:
@@ -2327,6 +2327,18 @@ __metadata:
   version: 1.1.0
   resolution: "@protobufjs/utf8@npm:1.1.0"
   checksum: 5b3fa7425fe2852f6e5643d9a53c6cfb4491630667176c0fc35ddb7a71101559241bafb6b80486144ed75da3d3624095d037c802b578dbdb4cce131cf1bcb7cf
+  languageName: node
+  linkType: hard
+
+"@reduxjs/toolkit@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@reduxjs/toolkit@npm:1.5.0"
+  dependencies:
+    immer: ^8.0.0
+    redux: ^4.0.0
+    redux-thunk: ^2.3.0
+    reselect: ^4.0.0
+  checksum: 421f5e7534347b20692f7883393fd1338f903544de48feacef61e38ee9faffb4e61264129a60161b0d1b4c0ad0f8fee635b35ee343d7111f5d53e41ae778935f
   languageName: node
   linkType: hard
 
@@ -4093,6 +4105,13 @@ __metadata:
     cosmiconfig: ^6.0.0
     resolve: ^1.12.0
   checksum: fc4e1224df180d88f44f6f31e448cf51a75c8aa7e0fd828e30c4143f69af6d49ce933f36952478a4e372485db35b6219628bcff16d7f5add724230addbc19e7d
+  languageName: node
+  linkType: hard
+
+"babel-plugin-minify-replace@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "babel-plugin-minify-replace@npm:0.5.0"
+  checksum: 0343b5f7c0c69b3ca810fbc4080c2dcc61721474652dabb04d18cc24618be63b23b349159a0658852708d20e5cebbc8419bcf0d536937bfd39848ca368cd6df1
   languageName: node
   linkType: hard
 
@@ -7314,6 +7333,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "finances@workspace:."
   dependencies:
+    "@firebase/app": ^0.6.13
+    "@reduxjs/toolkit": ^1.5.0
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.0
     "@types/react-router-dom": ^5.1.7
@@ -7325,6 +7346,8 @@ __metadata:
     react-refresh: ^0.9.0
     react-router-dom: ^5.2.0
     react-scripts: ^4.0.1
+    react-spring: ^8.0.27
+    reactfire: ^3.0.0-rc.0
     typescript: ^4.1.3
   languageName: unknown
   linkType: soft
@@ -8449,6 +8472,13 @@ fsevents@^1.2.7:
   version: 7.0.9
   resolution: "immer@npm:7.0.9"
   checksum: 20fba3dabd033f9584eb1df9c16210b64c16a536a6376b0dedf153176554d89432ee86409458d8773edd142ddcae75f8e242b1952cd5b61c22767a4538880dd0
+  languageName: node
+  linkType: hard
+
+"immer@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "immer@npm:8.0.0"
+  checksum: 99ef306c811902c31554ef2d5c22b8e59c2047761bf307c28559f6ec74b0ff8dfaa934c29d6704f1087514ff9e278c782731a1c21e8171d568a1124f57f7b192
   languageName: node
   linkType: hard
 
@@ -12711,7 +12741,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
+"prop-types@npm:^15.5.8, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -13150,6 +13180,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-spring@npm:^8.0.27":
+  version: 8.0.27
+  resolution: "react-spring@npm:8.0.27"
+  dependencies:
+    "@babel/runtime": ^7.3.1
+    prop-types: ^15.5.8
+  peerDependencies:
+    react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+  checksum: 8f041fd3037df9b610deeb5eb12d035ed9188ee0be4d2882b017db6074e7ab66ec9a990506e687274576516557d427a9199497b5559d3409ec38986dba987587
+  languageName: node
+  linkType: hard
+
 "react@npm:^17.0.1":
   version: 17.0.1
   resolution: "react@npm:17.0.1"
@@ -13157,6 +13200,20 @@ fsevents@^1.2.7:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: a76d86ec973eb4b25a46071ac7f974adfd66ed89ad1db63043be1d976ec25417520a210e6d724b0ad937422b706afcf9962cedda9e92125992a8c0e8a95f2051
+  languageName: node
+  linkType: hard
+
+"reactfire@npm:^3.0.0-rc.0":
+  version: 3.0.0-rc.0
+  resolution: "reactfire@npm:3.0.0-rc.0"
+  dependencies:
+    babel-plugin-minify-replace: ^0.5.0
+    rxfire: ^4.0.0
+    rxjs: ^6.6.3
+  peerDependencies:
+    firebase: ^8.1.1
+    react: "*"
+  checksum: 7cb2f4f7504477daf38f06a0f520e43a51e0e936817d087bc3c56edc3ffb85f2ea24c44c964c240322fcc66a43402f0c7c33f79a0b65a1d75adfab2298c50a6e
   languageName: node
   linkType: hard
 
@@ -13256,6 +13313,23 @@ fsevents@^1.2.7:
   dependencies:
     minimatch: 3.0.4
   checksum: 7ca5c180a8f1158171bd68ecb8b540e3c4e187de52a724eeea5383faece2b8ccae45f99e212d69ac7af574e1014d4963bfdf13fa124f18604aa9f47563e9f086
+  languageName: node
+  linkType: hard
+
+"redux-thunk@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "redux-thunk@npm:2.3.0"
+  checksum: 2d7210b88cef244384ab15bfe0c0f79a7d5a2fe059825da121121ec75378b175860695fafd5265386a0fd4b86212cc49e5972825f7bc9f803ad8753229f0258b
+  languageName: node
+  linkType: hard
+
+"redux@npm:^4.0.0":
+  version: 4.0.5
+  resolution: "redux@npm:4.0.5"
+  dependencies:
+    loose-envify: ^1.4.0
+    symbol-observable: ^1.2.0
+  checksum: 112739c2fb83ae2e18335d942a883b3ee14ebada31ff3a7924511a1f38a4278a762f5823491f3eb5083492de601ed76cb2687295c7d5db9a6e098c2542cdc05b
   languageName: node
   linkType: hard
 
@@ -13482,6 +13556,13 @@ fsevents@^1.2.7:
   version: 1.0.0
   resolution: "requires-port@npm:1.0.0"
   checksum: 0db25fb2ac9b4f2345a350846b7ba99d1f25a6686b1728246d14f05450c8f2fc066bdfae4561b4be2627c184a030a27e17268cfefdf46836e271db13734bc49e
+  languageName: node
+  linkType: hard
+
+"reselect@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "reselect@npm:4.0.0"
+  checksum: 3480930929f673f12962cdde140dce48ea8ba171cd428bb2c7639672e41770bd6b64e935bc0400f47cfa960f617c7ac068c4309527373825d11e27262f08c0a3
   languageName: node
   linkType: hard
 
@@ -13766,6 +13847,27 @@ resolve@1.18.1:
   dependencies:
     aproba: ^1.1.1
   checksum: ffc37a7b55630b3d878c77be5125ba71c4f38345bf9ee83f2a122d546cc3fc74985f8e639d926fcfb33f475bf4a0ae122791bd8dd24bce5355eed0968420ba34
+  languageName: node
+  linkType: hard
+
+"rxfire@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "rxfire@npm:4.0.0"
+  dependencies:
+    tslib: ^1.11.1
+  peerDependencies:
+    firebase: ">=8.0.0"
+    rxjs: 6.x.x
+  checksum: ec81b0395faf110c653cf56c120cb118be9ad74a18f93d110bd5078366949995c36cf85ccd93a3c45e00cc819a5f3230b2840adc4e42b9db25a091a5e5ca93cf
+  languageName: node
+  linkType: hard
+
+"rxjs@npm:^6.6.3":
+  version: 6.6.3
+  resolution: "rxjs@npm:6.6.3"
+  dependencies:
+    tslib: ^1.9.0
+  checksum: 61a3da6db947f69b7d805df3a619d8f60678b7372c4d571dd63e45ef3532be984a88307ea0aa2cd8d2578b62c3c022186e8da9dca47c9c1b8c9ecba6f5581deb
   languageName: node
   linkType: hard
 
@@ -14861,6 +14963,13 @@ resolve@1.18.1:
   bin:
     svgo: ./bin/svgo
   checksum: e1659738423f625561fa23769d0a010f5ba08e83926ce697491153fa29a8cb2452fa5abb14c1bb489aa186718856f8768d4da870210a79302d47535c57c30d30
+  languageName: node
+  linkType: hard
+
+"symbol-observable@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "symbol-observable@npm:1.2.0"
+  checksum: 268834a1d4cba19d40f367e5c2755f612969c8418e43a3be17408e392802a667f8bb542893440d58a080a8ea8da05ea98e27e472b9f4ff6fbda78a21a1a41c53
   languageName: node
   linkType: hard
 

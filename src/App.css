@@ -1,22 +1,27 @@
-:root {
-    --color-1: #514010;
-    --color-2: #776123;
-    --color-3: #a48a42;
-    --color-4: #ddcb9b;
-    --color-5: #fdf6e3;
-
-    --border-radius: 5px;
-}
-
 html {
     height: 100%;
 }
 
 body {
+    --border-radius: 5px;
+
     margin: 0px;
     height: 100%;
-    background: var(--color-5);
+    overflow: hidden;
+}
+
+.app {
+    height: 100%;
     color: var(--color-1);
+    background: var(--color-5);
+    transition-property: background, color;
+    transition-duration: 0.2s;
+
+    --color-1: #514010;
+    --color-2: #776123;
+    --color-3: #a48a42;
+    --color-4: #ddcb9b;
+    --color-5: #fdf6e3;
 }
 
 #root {
@@ -58,7 +63,7 @@ button {
     outline: none;
     cursor: pointer;
     font-size: 1em;
-    transition-property: opacity, background;
+    transition-property: opacity, background, color;
     transition-duration: 0.2s;
 }
 

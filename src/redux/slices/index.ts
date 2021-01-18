@@ -1,0 +1,1 @@
+export {userInfoSlice} from './userInfo';
