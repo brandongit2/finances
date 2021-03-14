@@ -1,6 +1,6 @@
 .container {
-    display: grid;
-    grid-template-columns: auto;
-    align-content: start;
-    row-gap: 1rem;
+  display: grid;
+  grid-template-columns: auto;
+  align-content: start;
+  row-gap: 1rem;
 }

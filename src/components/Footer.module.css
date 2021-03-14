@@ -1,9 +1,9 @@
 .container {
-    background: var(--color-1);
-    color: var(--color-5);
-    font-size: 80%;
-    padding: 0.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background: var(--color-1);
+  color: var(--color-5);
+  font-size: 80%;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

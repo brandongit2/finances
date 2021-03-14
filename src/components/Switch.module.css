@@ -1,31 +1,31 @@
 .container {
-    display: grid;
-    grid-auto-flow: column;
-    column-gap: 0.4rem;
-    align-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 0.4rem;
+  align-items: center;
 }
 
 .outer {
-    position: relative;
-    width: 34px;
-    height: 20px;
-    background: var(--color-5);
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 8px -2px var(--color-2);
+  position: relative;
+  width: 34px;
+  height: 20px;
+  background: var(--color-5);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 8px -2px var(--color-2);
 }
 
 .inner {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    background: var(--color-1);
-    border-radius: 8px;
-    box-shadow: 0px 0px 8px -2px var(--color-1);
-    transition: left 0.2s;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: var(--color-1);
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px -2px var(--color-1);
+  transition: left 0.2s;
 }
 
 .inner.switched {
-    left: 16px;
+  left: 16px;
 }

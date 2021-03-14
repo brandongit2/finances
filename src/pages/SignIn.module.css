@@ -1,12 +1,12 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form {
-    display: grid;
-    grid-template-columns: repeat(2, min-content);
-    gap: 1rem;
-    align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 1rem;
+  align-items: center;
 }

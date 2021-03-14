@@ -1,31 +1,31 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    --border-radius: 5px;
+  --border-radius: 5px;
 
-    margin: 0px;
-    height: 100%;
-    overflow: hidden;
+  margin: 0px;
+  height: 100%;
+  overflow: hidden;
 }
 
 .app {
-    height: 100%;
-    color: var(--color-1);
-    background: var(--color-5);
-    transition-property: background, color;
-    transition-duration: 0.2s;
+  height: 100%;
+  color: var(--color-1);
+  background: var(--color-5);
+  transition-property: background, color;
+  transition-duration: 0.2s;
 
-    --color-1: #514010;
-    --color-2: #776123;
-    --color-3: #a48a42;
-    --color-4: #ddcb9b;
-    --color-5: #fdf6e3;
+  --color-1: #514010;
+  --color-2: #776123;
+  --color-3: #a48a42;
+  --color-4: #ddcb9b;
+  --color-5: #fdf6e3;
 }
 
 #root {
-    height: 100%;
+  height: 100%;
 }
 
 p,
@@ -40,42 +40,42 @@ h5,
 h6,
 button,
 input {
-    font-family: museo-sans;
-    margin: 0px;
+  font-family: museo-sans;
+  margin: 0px;
 }
 
 h1 {
-    font-weight: 900;
-    font-size: 2.5em;
+  font-weight: 900;
+  font-size: 2.5em;
 }
 
 h2 {
-    font-weight: 900;
-    font-size: 1.25em;
+  font-weight: 900;
+  font-size: 1.25em;
 }
 
 button {
-    background: var(--color-1);
-    color: var(--color-5);
-    border: 0px;
-    padding: 0.4em 1em;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    transition-property: opacity, background, color;
-    transition-duration: 0.2s;
+  background: var(--color-1);
+  color: var(--color-5);
+  border: 0px;
+  padding: 0.4em 1em;
+  border-radius: var(--border-radius);
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  transition-property: opacity, background, color;
+  transition-duration: 0.2s;
 }
 
 button:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 button:active {
-    opacity: 1;
-    background: var(--color-2);
+  opacity: 1;
+  background: var(--color-2);
 }
 
 label {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }

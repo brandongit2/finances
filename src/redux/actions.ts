@@ -1,5 +1,5 @@
-import {userInfoSlice} from './slices';
+import {userInfoSlice} from "./slices";
 
 export const userInfo = {
-    ...userInfoSlice.actions
+  ...userInfoSlice.actions,
 };

@@ -1,9 +1,9 @@
-import Balance from './Balance';
+import Balance from "./Balance";
 
 export default function Dashboard() {
-    return (
-        <div>
-            <Balance />
-        </div>
-    );
+  return (
+    <div>
+      <Balance />
+    </div>
+  );
 }
