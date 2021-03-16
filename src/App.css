@@ -17,11 +17,11 @@ body {
   transition-property: background, color;
   transition-duration: 0.2s;
 
-  --color-1: #514010;
-  --color-2: #776123;
-  --color-3: #a48a42;
-  --color-4: #ddcb9b;
-  --color-5: #fdf6e3;
+  --color-1: #26231c;
+  --color-2: #49453b;
+  --color-3: #877e63;
+  --color-4: #cfc6ae;
+  --color-5: #fcf9ef;
 }
 
 #root {
@@ -40,7 +40,7 @@ h5,
 h6,
 button,
 input {
-  font-family: museo-sans;
+  font-family: "Fira Sans", sans-serif;
   margin: 0px;
 }
 
