@@ -1,11 +1,10 @@
-/node_modules
-/build
+**/node_modules
 .eslintcache
 
 # Yarn-recommended gitignores
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
+**/.yarn/*
+**/!.yarn/releases
+**/!.yarn/plugins
+**/!.yarn/sdks
+**/!.yarn/versions
+**/.pnp.*

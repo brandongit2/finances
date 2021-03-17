@@ -1,0 +1,54 @@
+{
+  "name": "finances-client",
+  "private": true,
+  "homepage": "https://finances.brandontsang.net",
+  "bugs": "https://github.com/brandongit2/finances/issues",
+  "author": {
+    "name": "Brandon Tsang",
+    "email": "brandononline2@gmail.com",
+    "url": "https://brandontsang.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandongit2/finances.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@firebase/app": "^0.6.13",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@yarnpkg/pnpify": "^2.4.0",
+    "eslint-config-react-app": "^6.0.0",
+    "firebase": "^8.2.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-refresh": "^0.9.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
+    "react-spring": "^8.0.27",
+    "reactfire": "^3.0.0-rc.0",
+    "typescript": "^4.1.3"
+  }
+}

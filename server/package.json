@@ -1,5 +1,5 @@
 {
-  "name": "finances",
+  "name": "finances-server",
   "private": true,
   "homepage": "https://finances.brandontsang.net",
   "bugs": "https://github.com/brandongit2/finances/issues",
@@ -11,5 +11,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/brandongit2/finances.git"
+  },
+  "scripts": {
+    "start": "nodemon"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.35",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   }
 }
