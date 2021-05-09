@@ -56,7 +56,7 @@ Windows/Linux/macOS:
 yarn
 ```
 
-Finally, start the development containers with `yarn dev`:
+Finally, start the development containers:
 
 Windows/Linux/macOS:
 
@@ -98,7 +98,7 @@ This project uses Docker Compose to run two containers at once:
 If you change any of the Docker config files, run `yarn docker-rebuild` at the project root to rebuild all the
 containers.
 
-### About Yarn scripts
+### About the Yarn scripts
 
 `yarn dev:start` in the project root uses Docker Compose to start up the two containers for the app. The containers
 start in detached mode, meaning they run in the background. To attach to a detached container, run
