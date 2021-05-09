@@ -1,12 +1,24 @@
 {
   "name": "finances",
-  "repository": "git@github.com:brandongit2/finances.git",
-  "license": "UNLICENSED",
   "private": true,
+  "homepage": "https://finances.brandontsang.net",
+  "author": {
+    "name": "Brandon Tsang",
+    "email": "brandononline2@gmail.com",
+    "url": "https://brandontsang.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandongit2/finances.git"
+  },
+  "bugs": "https://github.com/brandongit2/finances/issues",
+  "license": "UNLICENSED",
   "workspaces": [
     "app"
   ],
   "scripts": {
-    "dev": "docker-compose up -d"
+    "dev:start": "docker-compose up -d",
+    "dev:stop": "docker-compose down",
+    "docker-rebuild": "docker-compose build"
   }
 }

@@ -20,7 +20,7 @@ Prerequisites:
 First, make sure you're using the correct Node.js version:
 
 Windows (if you're having issues with this command, see
-[this link](https://github.com/brandongit2/finances/tree/main/docs/nvm-windows-notes.md)):
+[this link](https://github.com/brandongit2/finances/blob/main/docs/nvm-windows-notes.md)):
 
 ```powershell
 nvm use $(Get-Content .nvmrc)
@@ -61,11 +61,17 @@ Finally, start the development containers with `yarn dev`:
 Windows/Linux/macOS:
 
 ```bash
-yarn dev
+yarn dev:start
 ```
 
 Open http://localhost:3000 in your browser to view the project! Changing source files will automatically update the
 browser.
+
+To stop the dev server, run
+
+```bash
+yarn dev:stop
+```
 
 ## About the codebase
 
@@ -89,7 +95,7 @@ This project uses Docker Compose to run two containers at once:
 - `finances-db`, which is an instance of the `postgres` image, and is used to run our database, and
 - `finances-app`, which is built from the Dockerfile located at `./app/Dockerfile`.
 
-If you change any of the Docker config files, run `docker-compose build` at the project root to rebuild all the
+If you change any of the Docker config files, run `yarn docker-rebuild` at the project root to rebuild all the
 containers.
 
 ### About `yarn dev`
