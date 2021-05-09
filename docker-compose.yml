@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  finances-db:
+    image: postgres:13.2
+    container_name: finances-db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: finances
+  finances-app:
+    build:
+      context: ./app/
+    container_name: finances-app
+    depends_on:
+      - finances-db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/finances
+
+      # These mount to empty folders so that `yarn dev` in the container doesn't mess with `.next/` and `node_modules/`
+      # on your local filesystem.
+      - /usr/finances/.next
+      - /usr/finances/node_modules

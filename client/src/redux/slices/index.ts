@@ -1,1 +1,0 @@
-export {userInfoSlice} from "./userInfo";
