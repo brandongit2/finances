@@ -1,6 +1,7 @@
 import React from "react";
 
 import type {FC} from "react";
+
 const Index: FC = () => {
   return (
     <div>

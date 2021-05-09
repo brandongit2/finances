@@ -14,7 +14,7 @@
   "bugs": "https://github.com/brandongit2/finances/issues",
   "license": "UNLICENSED",
   "workspaces": [
-    "app"
+    "packages/*"
   ],
   "scripts": {
     "dev:start": "docker-compose up -d",
