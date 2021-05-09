@@ -98,11 +98,11 @@ This project uses Docker Compose to run two containers at once:
 If you change any of the Docker config files, run `yarn docker-rebuild` at the project root to rebuild all the
 containers.
 
-### About `yarn dev`
+### About Yarn scripts
 
-`yarn dev` in the project root uses Docker Compose to start up the two containers for the app. The containers start in
-detached mode, meaning they run in the background. To attach to a detached container, run
-`docker attach <container-name>`. To stop the containers, run `docker-compose down` in the project root.
+`yarn dev:start` in the project root uses Docker Compose to start up the two containers for the app. The containers
+start in detached mode, meaning they run in the background. To attach to a detached container, run
+`docker attach <container-name>`. To stop the containers, run `yarn dev:stop` in the project root.
 
 The `finances-db` container just builds from the `postgres` image on Docker Hub. PostgreSQL is configured to run on
 port 5433. Its username is `postgres`, its password is `postgres`, and the database name is `finances`.
