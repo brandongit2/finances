@@ -1,0 +1,7 @@
+{
+  "name": "finances",
+  "author": "Brandon Tsang <brandononline2@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.2.3"
+}
