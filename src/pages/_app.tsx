@@ -1,4 +1,5 @@
 import {Hydrate, QueryClient, QueryClientProvider} from "@tanstack/react-query"
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
 import {useState} from "react"
 
 import type {DehydratedState} from "@tanstack/react-query"
@@ -14,6 +15,7 @@ const App = ({Component, pageProps}: AppProps<{dehydratedState: DehydratedState}
 		<QueryClientProvider client={queryClient}>
 			<Hydrate state={pageProps.dehydratedState}>
 				<Component {...pageProps} />
+				<ReactQueryDevtools initialIsOpen={false} />
 			</Hydrate>
 		</QueryClientProvider>
 	)

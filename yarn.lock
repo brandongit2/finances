@@ -309,10 +309,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/match-sorter-utils@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "@tanstack/match-sorter-utils@npm:8.1.1"
+  dependencies:
+    remove-accents: 0.4.2
+  checksum: bf1458b7ca08cf79750ebd46fddef9c9b845ef55b5b69c0f7f69d48d6cbd73dbfd98763509f655298033b93cfc92b21d54f9f13a4d631cc68ca9191913967205
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-core@npm:4.3.4":
   version: 4.3.4
   resolution: "@tanstack/query-core@npm:4.3.4"
   checksum: d8cbe18a297114a0e63f3a9bbf0885d8f0a9ff081edf79cc98c59ca555511bfc824dc82da82826dcb870c076224ead1a4420bea505ae10baf406b6400bf1b46d
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:4.3.5":
+  version: 4.3.5
+  resolution: "@tanstack/react-query-devtools@npm:4.3.5"
+  dependencies:
+    "@tanstack/match-sorter-utils": ^8.1.1
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    "@tanstack/react-query": 4.3.4
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: adb362662da64c7335f8fca794f919b2ef426ec68257df9ac4d7fb2c1c881bd746e7faf874b3d2c113a8bd6c94ec4e8c91bd12a4f922512354e4d4451139ee0a
   languageName: node
   linkType: hard
 
@@ -342,7 +365,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/client@npm:next":
+"@trpc/client@npm:10.0.0-proxy-alpha.76":
   version: 10.0.0-proxy-alpha.76
   resolution: "@trpc/client@npm:10.0.0-proxy-alpha.76"
   peerDependencies:
@@ -351,7 +374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/next@npm:next":
+"@trpc/next@npm:10.0.0-proxy-alpha.76":
   version: 10.0.0-proxy-alpha.76
   resolution: "@trpc/next@npm:10.0.0-proxy-alpha.76"
   dependencies:
@@ -368,7 +391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/react@npm:next":
+"@trpc/react@npm:10.0.0-proxy-alpha.76":
   version: 10.0.0-proxy-alpha.76
   resolution: "@trpc/react@npm:10.0.0-proxy-alpha.76"
   peerDependencies:
@@ -381,7 +404,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trpc/server@npm:next":
+"@trpc/server@npm:10.0.0-proxy-alpha.76":
   version: 10.0.0-proxy-alpha.76
   resolution: "@trpc/server@npm:10.0.0-proxy-alpha.76"
   checksum: 3b43f55ae3e1bc679de3d10202a747cb5a412d15e4e2987bfb19834248f4a917b7a0ac667d8acd5be44872782b35f9f90676d6b32f326f8a10d4538937260fab
@@ -1430,10 +1453,11 @@ __metadata:
     "@prisma/client": 4.3.1
     "@supabase/supabase-js": 1.35.6
     "@tanstack/react-query": 4.3.4
-    "@trpc/client": next
-    "@trpc/next": next
-    "@trpc/react": next
-    "@trpc/server": next
+    "@tanstack/react-query-devtools": 4.3.5
+    "@trpc/client": 10.0.0-proxy-alpha.76
+    "@trpc/next": 10.0.0-proxy-alpha.76
+    "@trpc/react": 10.0.0-proxy-alpha.76
+    "@trpc/server": 10.0.0-proxy-alpha.76
     "@types/node": 18.7.18
     "@types/react": 18.0.20
     "@types/react-dom": 18.0.6
@@ -1450,7 +1474,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: 7.35.0
-    superjson: 1.9.1
+    superjson: 1.10.0
     typescript: 4.8.3
     zod: 3.19.1
   languageName: unknown
@@ -2786,6 +2810,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"remove-accents@npm:0.4.2":
+  version: 0.4.2
+  resolution: "remove-accents@npm:0.4.2"
+  checksum: 84a6988555dea24115e2d1954db99509588d43fe55a1590f0b5894802776f7b488b3151c37ceb9e4f4b646f26b80b7325dcea2fae58bc3865df146e1fa606711
+  languageName: node
+  linkType: hard
+
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -3109,12 +3140,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superjson@npm:1.9.1":
-  version: 1.9.1
-  resolution: "superjson@npm:1.9.1"
+"superjson@npm:1.10.0":
+  version: 1.10.0
+  resolution: "superjson@npm:1.10.0"
   dependencies:
     copy-anything: ^3.0.2
-  checksum: b575fe4d18b7263b3d6a617dea7857a0f31ae30e80f8cc0c6fe18dc2e6b8bbd7b3374007ca67fa487e0159fff18cce03cbe0654a0df97f337bec6a8835c0eee3
+  checksum: e5156c89aac1f47e85a0d62c79ae15a0918a6b906c27026f41ab6191c6ccd1a6204245d286a9db7491b7954044b2ef7d52f2e5d5050a7f70e163883d02036fa3
   languageName: node
   linkType: hard
 
