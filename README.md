@@ -34,7 +34,7 @@ brew install supabase/tap/supabase
 1. Install the required packages:
 
    ```bash
-   yarn
+   yarn install
    ```
 
 1. Set your environment variables:
