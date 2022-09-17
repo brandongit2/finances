@@ -1,23 +1,35 @@
 import {Hydrate, QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools"
+import {SessionProvider} from "next-auth/react"
 import {useState} from "react"
 
 import type {DehydratedState} from "@tanstack/react-query"
+import type {Session} from "next-auth"
 import type {AppProps} from "next/app"
 import type {ReactElement} from "react"
 
 import {trpc} from "~/trpc"
 
-const App = ({Component, pageProps}: AppProps<{dehydratedState: DehydratedState}>): ReactElement | null => {
+export type Props = {
+	session?: Session | null
+	dehydratedState?: DehydratedState
+}
+
+const App = ({
+	Component,
+	pageProps: {session, dehydratedState, ...pageProps},
+}: AppProps<Props>): ReactElement | null => {
 	const [queryClient] = useState(() => new QueryClient())
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<Hydrate state={pageProps.dehydratedState}>
-				<Component {...pageProps} />
-				<ReactQueryDevtools initialIsOpen={false} />
-			</Hydrate>
-		</QueryClientProvider>
+		<SessionProvider session={session}>
+			<QueryClientProvider client={queryClient}>
+				<Hydrate state={dehydratedState}>
+					<Component {...pageProps} />
+					<ReactQueryDevtools initialIsOpen={false} />
+				</Hydrate>
+			</QueryClientProvider>
+		</SessionProvider>
 	)
 }
 

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@prisma/client": "4.3.1",
-    "@supabase/supabase-js": "1.35.6",
+    "@supabase/supabase-js": "2.0.0-rc.10",
     "@tanstack/react-query": "4.3.4",
     "@tanstack/react-query-devtools": "4.3.5",
     "@trpc/client": "10.0.0-proxy-alpha.76",
@@ -28,7 +28,9 @@
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
+    "immer": "9.0.15",
     "next": "12.3.0",
+    "next-auth": "4.10.3",
     "prettier": "2.7.1",
     "prettier-plugin-prisma": "4.2.0",
     "prisma": "4.3.1",
@@ -37,6 +39,7 @@
     "react-hook-form": "7.35.0",
     "superjson": "1.10.0",
     "typescript": "4.8.3",
-    "zod": "3.19.1"
+    "zod": "3.19.1",
+    "zustand": "4.1.1"
   }
 }

@@ -1,77 +1,35 @@
-import {useQueryClient} from "@tanstack/react-query"
-import {createProxySSGHelpers} from "@trpc/react/ssg"
-import {useForm} from "react-hook-form"
-import superjson from "superjson"
+import {signOut, useSession} from "next-auth/react"
+import Link from "next/link"
 
-import type {User} from "@prisma/client"
-import type {DehydratedState} from "@tanstack/react-query"
-import type {GetStaticProps} from "next"
-import type {SubmitHandler} from "react-hook-form"
+import type {NextPage} from "next"
 
-import {createContext} from "~/context"
-import {appRouter} from "~/server/routers"
-import {trpc} from "~/trpc"
-
-const Index = () => {
-	// const utils = trpc.useContext()
-	const {register, handleSubmit, reset: resetFormValues} = useForm<User>()
-	const {data} = trpc.user.getAll.useQuery()
-	const queryClient = useQueryClient()
-
-	const addUser = trpc.user.create.useMutation({
-		onSuccess: async () => {
-			resetFormValues()
-			queryClient.invalidateQueries([`user.getAll`])
-			// await utils.user.getAll.invalidate()
-		},
-	})
-
-	const onAddUser: SubmitHandler<User> = async (data) => {
-		addUser.mutate(data)
-	}
+const Index: NextPage = () => {
+	const {data: session} = useSession()
 
 	return (
 		<div>
-			<h1>Hello world!</h1>
-
-			<form onSubmit={handleSubmit(onAddUser)}>
-				<label>
-					Name:{` `}
-					<input type="text" {...register(`name`)} />
-				</label>
-				<label>
-					Email:{` `}
-					<input type="email" {...register(`email`)} />
-				</label>
-				<button type="submit">Add user</button>
-			</form>
-
-			<p>Users:</p>
-			<ul>
-				{data?.users.map((user) => (
-					<li key={user.id}>
-						{user.name}, {user.email}
-					</li>
-				))}
-			</ul>
+			<h1>Finances Landing Page</h1>
+			{session?.user ? (
+				<div>
+					<p>You&apos;re signed in as {session.user.name}!</p>
+					<ul>
+						<li>
+							<Link href="/dashboard">Go to dashboard</Link>
+						</li>
+						<li>
+							<button type="button" onClick={() => void signOut()}>
+								Sign out
+							</button>
+						</li>
+					</ul>
+				</div>
+			) : (
+				<p>
+					You&apos;re not signed in. Click <Link href="/sign-in">here</Link> to sign in.
+				</p>
+			)}
 		</div>
 	)
 }
 
 export default Index
-
-export const getStaticProps: GetStaticProps<{trpcState: DehydratedState}> = async () => {
-	const ssg = createProxySSGHelpers({
-		router: appRouter,
-		ctx: await createContext(),
-		transformer: superjson,
-	})
-
-	await ssg.user.getAll.prefetch()
-
-	return {
-		props: {
-			trpcState: ssg.dehydrate(),
-		},
-	}
-}
