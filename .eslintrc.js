@@ -1,5 +1,5 @@
 module.exports = {
-	extends: [`eslint:recommended`, `plugin:import/recommended`],
+	extends: [`eslint:recommended`, `plugin:import/recommended`, `next/core-web-vitals`],
 	plugins: [`import`],
 	env: {
 		es6: true,
@@ -14,7 +14,7 @@ module.exports = {
 		"import/no-duplicates": `error`,
 		"import/no-named-as-default": `off`,
 		"import/no-unresolved": `off`,
-		"import/no-unused-modules": [`warn`, {unusedExports: true}],
+		"import/no-unused-modules": [`warn`, {unusedExports: true, ignoreExports: [`**/*.tsx`]}],
 		"import/order": [
 			`warn`,
 			{
@@ -75,7 +75,7 @@ module.exports = {
 				"react/jsx-no-useless-fragment": [`warn`, {allowExpressions: true}],
 				"react/no-unused-prop-types": `warn`,
 				"react/prop-types": `off`,
-				"react/self-closing-comp": `warn`,
+				"react/self-closing-comp": `off`,
 			},
 		},
 		{
